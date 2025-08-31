@@ -9,7 +9,7 @@ INCLUDE_DIR = include
 
 # Files
 SRCS = $(SRC_DIR)/bst_demo.cpp
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(BIN_DIR)/bst_demo.o
 EXEC = $(BIN_DIR)/bst_demo
 
 # Default target
@@ -19,8 +19,8 @@ all: $(EXEC)
 $(EXEC): $(OBJS) | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
-# Compile object files
-%.o: %.cpp $(INCLUDE_DIR)/bst.hpp
+# Compile object files in bin/
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Create bin directory if it doesn't exist
@@ -33,6 +33,6 @@ run: $(EXEC)
 
 # Clean object files and executable
 clean:
-	rm -f $(SRC_DIR)/*.o $(EXEC)
+	rm -f $(BIN_DIR)/*.o $(EXEC)
 
 .PHONY: all run clean
