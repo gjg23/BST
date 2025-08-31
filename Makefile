@@ -8,7 +8,7 @@ BIN_DIR = bin
 INCLUDE_DIR = include
 
 # Files
-SRCS = $(SRC_DIR)/bst.cpp
+SRCS = $(SRC_DIR)/bst_demo.cpp
 OBJS = $(SRCS:.cpp=.o)
 EXEC = $(BIN_DIR)/bst_demo
 

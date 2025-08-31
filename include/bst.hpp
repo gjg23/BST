@@ -62,7 +62,7 @@ public:
 	void insert(const Comparable & x);
 
 	// print node contents
-	void print(ostream & out = std::cout);
+	void print(std::ostream & out = std::cout);
 };
 
 // implementation file
