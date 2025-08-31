@@ -1,4 +1,8 @@
+// bst.hpp
 // Header for BST
+
+#ifndef BST_HPP
+#define BST_HPP
 
 #include <utility>
 #include <iostream>
@@ -6,140 +10,62 @@
 template<typename Comparable>
 class binary_search_tree
 {
-    public:
-    binary_search_tree()
-    {
-        root = nullptr;
-    }
+private:
+	// binary node structure
+	struct binary_node {
+		Comparable element;
+		binary_node *left;
+		binary_node *right;
 
-    const Comparable & min( )
-    {
-        return min(root)->element;
-    }
+		// construct left and right nodes
+		binary_node(const Comparable & an_element, binary_node *l, binary_node *r) :
+		element { an_element }, left{ l }, right{ r } { }
 
-    const Comparable & max( )
-    {
-        return max(root)->element;
-    }
-    
-    bool contains( const Comparable & x )
-    {
-        return contains(x, root);
-    }
-    
-    bool is_empty( ) 
-    {
-        return is_empty(root);
-    }
+		binary_node(const Comparable && an_element, binary_node *l, binary_node *r) :
+		element { std::move(an_element) }, left{ l }, right{ r } { }
+	};
 
-    void insert( const Comparable & x )
-    {
-        insert(x, root);
-    }
+	// the root node
+	binary_node *root = nullptr;
 
-    void print( ostream & out = cout)
-    {
-        print(root, out);
-    }
+	// insert node
+	void insert (const Comparable & x, binary_node * & t);
+	
+	// get min or max node
+	binary_node * min(binary_node *t);
+	binary_node * max(binary_node *t);
 
-    
-    private:
-    
-    struct binary_node
-    {
-        Comparable element;
-        binary_node *left;
-        binary_node *right;
+	// check if empty
+	bool is_empty(binary_node *t);
 
-        binary_node(const Comparable & an_element, binary_node *l, binary_node *r) :
-        element { an_element }, left{ l }, right{ r } { }
-        
-        binary_node(const Comparable && an_element, binary_node *l, binary_node *r) :
-        element { std::move(an_element) }, left{ l }, right{ r } { }
-    };
+	// check if there is child
+	bool contains(const Comparable & x, binary_node *t);
 
-    binary_node *root = nullptr;
+	// print contents
+	void print(binary_node *t, std::ostream & out);
 
-    void insert ( const Comparable & x, binary_node * & t )
-    {
-        if (t == nullptr)
-        {
-            t = new binary_node(x, nullptr, nullptr);
-        }
-        else if (x < t->element)
-        {
-            insert(x, t->left);
-        }
-        else if(x > t->element)
-        {
-            insert(x, t->right);
-        }
-    }
-    
-    binary_node * min(binary_node *t)
-    {
-        if (t == nullptr) //empty tree
-        {
-            return nullptr;
-        }
-        else if (t->left == nullptr) //no left pointer
-        {
-            return t;
-        }
-        else
-        {
-            return min(t->left); //move to next left child
-        }
-    }
+public:
+	// the binary tree (first node is initialized to null)
+	binary_search_tree();
 
-    binary_node * max(binary_node *t)
-    {
-        if (t->right != nullptr)
-        {
-            return max(t->right);
-        }
-        return t;
-    }
+	// Get min or max element
+	const Comparable & min();
+	const Comparable & max();
+	
+	// check if node is parent of another
+	bool contains(const Comparable & x);
+	
+	// check if end of tree
+	bool is_empty();
 
-    bool is_empty(binary_node *t)
-    {
-        if (t == nullptr)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+	// add node as child to another node
+	void insert(const Comparable & x);
 
-    bool contains(const Comparable & x, binary_node *t)
-    {
-        if (t == nullptr)
-        {
-            return false;
-        }
-        else if (t < t->element)
-        {
-            return contains(x, t->left);
-        }
-        else if(t > t->element)
-        {
-            return contains(x, t->right);
-        }
-        else
-        {
-            return true;
-        }
-    }
-
-    void print(binary_node *t, ostream & out )
-    {
-        if (t != nullptr)
-        {
-            print(t->left, out);
-            out << t->element << endl;
-            print (t->right, out);
-        }
-    }
+	// print node contents
+	void print(ostream & out = std::cout);
 };
+
+// implementation file
+#include "bst.tpp"
+
+#endif
