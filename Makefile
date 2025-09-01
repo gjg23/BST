@@ -7,19 +7,27 @@ SRC_DIR = src
 BIN_DIR = bin
 INCLUDE_DIR = include
 
-# Files
-SRCS = $(SRC_DIR)/bst_demo.cpp
-OBJS = $(BIN_DIR)/bst_demo.o
-EXEC = $(BIN_DIR)/bst_demo
+# Source files
+SRCS = $(SRC_DIR)/bst_demo.cpp $(SRC_DIR)/bst_cli.cpp
+OBJS = $(BIN_DIR)/bst_demo.o $(BIN_DIR)/bst_cli.o
 
-# Default target
-all: $(EXEC)
+# Executables
+EXEC_DEMO = $(BIN_DIR)/bst_demo
+EXEC_CLI  = $(BIN_DIR)/bst_cli
+EXECS = $(EXEC_DEMO) $(EXEC_CLI)
 
-# Compile executable
-$(EXEC): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+# Default target: build all executables
+all: $(EXECS)
 
-# Compile object files in bin/
+# Compile bst_demo
+$(EXEC_DEMO): $(BIN_DIR)/bst_demo.o | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+# Compile bst_cli
+$(EXEC_CLI): $(BIN_DIR)/bst_cli.o | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+# Rule for object files in bin/
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
@@ -27,12 +35,15 @@ $(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BIN_DIR)
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-# Run the demo
-run: $(EXEC)
-	./$(EXEC)
+# Run the demos
+run_demo: $(EXEC_DEMO)
+	./$(EXEC_DEMO)
 
-# Clean object files and executable
+run_cli: $(EXEC_CLI)
+	./$(EXEC_CLI)
+
+# Clean object files and executables
 clean:
-	rm -f $(BIN_DIR)/*.o $(EXEC)
+	rm -f $(BIN_DIR)/*.o $(EXECS)
 
-.PHONY: all run clean
+.PHONY: all run_demo run_cli clean

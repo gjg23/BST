@@ -1,36 +1,28 @@
 === Binary Search Tree Demo ===
-
-Choose an option:
-1. Insert value
-2. Print tree (in-order)
-3. Check if value exists
-4. Get min
-5. Get max
-6. Exit
-Enter choice: Enter value to insert: 25 inserted.
-Enter choice: Enter value to insert: 10 inserted.
-Enter choice: Enter value to insert: 30 inserted.
-Enter choice: Enter value to insert: 5 inserted.
-Enter choice: Enter value to insert: 15 inserted.
-Enter choice: Enter value to insert: 27 inserted.
-Enter choice: Enter value to insert: 35 inserted.
-Enter choice: Enter value to insert: 2 inserted.
-Enter choice: Enter value to insert: 12 inserted.
-Enter choice: Enter value to insert: 8 inserted.
-Enter choice: Enter value to insert: 3 inserted.
-Enter choice: Enter value to insert: 7 inserted.
-Enter choice: Enter value to insert: 18 inserted.
-Enter choice: Enter value to insert: 28 inserted.
-Enter choice: Enter value to insert: 33 inserted.
-Enter choice: Enter value to insert: 1 inserted.
-Enter choice: Enter value to insert: 6 inserted.
-Enter choice: Enter value to insert: 11 inserted.
-Enter choice: Enter value to insert: 14 inserted.
-Enter choice: Enter value to insert: 16 inserted.
-Enter choice: Enter value to insert: 20 inserted.
-Enter choice: Enter value to insert: 22 inserted.
-Enter choice: Enter value to insert: 24 inserted.
-Enter choice: Tree contents (in-order):
+Enter value to insert: 25 inserted.
+Enter value to insert: 10 inserted.
+Enter value to insert: 30 inserted.
+Enter value to insert: 5 inserted.
+Enter value to insert: 15 inserted.
+Enter value to insert: 27 inserted.
+Enter value to insert: 35 inserted.
+Enter value to insert: 2 inserted.
+Enter value to insert: 12 inserted.
+Enter value to insert: 8 inserted.
+Enter value to insert: 3 inserted.
+Enter value to insert: 7 inserted.
+Enter value to insert: 18 inserted.
+Enter value to insert: 28 inserted.
+Enter value to insert: 33 inserted.
+Enter value to insert: 1 inserted.
+Enter value to insert: 6 inserted.
+Enter value to insert: 11 inserted.
+Enter value to insert: 14 inserted.
+Enter value to insert: 16 inserted.
+Enter value to insert: 20 inserted.
+Enter value to insert: 22 inserted.
+Enter value to insert: 24 inserted.
+Tree contents (in-order):
 1
 2
 3
@@ -54,8 +46,8 @@ Enter choice: Tree contents (in-order):
 30
 33
 35
-Enter choice: Enter value to search: 15 exists in the tree.
-Enter choice: Enter value to search: 40 not found.
-Enter choice: Min value: 1
-Enter choice: Max value: 35
-Enter choice: Exiting program.
+Enter value to search: 15 exists in the tree.
+Enter value to search: 40 not found.
+Min value: 1
+Max value: 35
+Exiting program.

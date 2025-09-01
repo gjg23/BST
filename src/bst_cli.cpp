@@ -11,10 +11,18 @@ int main() {
 	binary_search_tree<int> tree;
 	int choice, value;
 
-	std::cout << "=== Binary Search Tree Demo ===\n";
-
 	// input loop
 	while (true) {
+        std::cout << "\033[2J\033[1;1H";
+        std::cout << "=== Binary Search Tree Demo ===\n";
+        std::cout << "\nChoose an option:\n";
+        std::cout << "1. Insert value\n";
+        std::cout << "2. Print tree (in-order)\n";
+        std::cout << "3. Check if value exists\n";
+        std::cout << "4. Get min\n";
+        std::cout << "5. Get max\n";
+        std::cout << "6. Exit\n";
+		std::cout << "Enter choice: ";
 		std::cin >> choice;
 
 		switch (choice) {
@@ -60,5 +68,11 @@ int main() {
 		default:
 			std::cout << "Invalid choice. Try again." << std::endl;
 		}
+
+        // enter to continue
+        std::cout << "Press Enter to continue...";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
+
 	}
 }
