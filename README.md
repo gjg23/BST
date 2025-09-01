@@ -1,7 +1,7 @@
 # Binary Search Tree (BST) Demo
 
 **Course:** Data Structures and Algorithms  
-**Type:** Class assignment / portfolio project  
+**Type:** Class assignment 
 
 ---
 
